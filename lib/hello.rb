@@ -36,12 +36,12 @@ journalists_to_tweet = 5.times.map{ journalists[rand(0...journalists.length)] }.
 journalists_to_tweet.each { |chr|  rest_connection.update("Hello #{chr} #bonjour_monde @the_hacking_pro")}
 
 ## Favorite the last 25 tweets with the #bonjour_monde
-client.search("#bonjour_monde", result_type: "recent").take(25).collect do |tweet|
+rest_connection.search("#bonjour_monde", result_type: "recent").take(25).collect do |tweet|
   rest_connection.fav tweet
 end
 
 ## Folow the last 20 people who tweeted with the #bonjour_monde hastag
-client.search("#bonjour_monde", result_type: "recent").take(5).collect do |tweet|
+rest_connection.search("#bonjour_monde", result_type: "recent").take(5).collect do |tweet|
   rest_connection.follow tweet.user
 end
 
